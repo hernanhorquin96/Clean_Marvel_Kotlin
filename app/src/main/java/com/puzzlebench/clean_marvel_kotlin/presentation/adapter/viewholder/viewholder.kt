@@ -8,12 +8,13 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.listener.CharacterListen
 import kotlinx.android.synthetic.main.character_cards_layout.view.*
 
 
-class CharactersAdapterViewHolder(view: View, val listener: CharacterListener) : RecyclerView.ViewHolder(view) {
+class CharactersAdapterViewHolder(view: View, val listener: CharacterListener, val onCharacterClicked: (Character) -> Unit) : RecyclerView.ViewHolder(view) {
 
     fun bind(item: Character) = with(itemView) {
         tv_item.text = item.name
         val string = item.thumbnail.path + "." + item.thumbnail.extension
         image_thumbnail.getImageByUrl(string)
         setOnClickListener { listener(item) }
+        setOnClickListener { onCharacterClicked(item) }
     }
 }

@@ -18,4 +18,8 @@ open class MainActivity : BaseRxActivity() {
         setContentView(R.layout.activity_main)
         presenter.init()
     }
+
+    fun getCharacterById(characterId: Int) {
+        presenter.requestCharacter(characterId)
+    }
 }

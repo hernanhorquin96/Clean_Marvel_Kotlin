@@ -28,4 +28,17 @@ class CharacterPresenter(view: CharecterView, private val getChatacterServiceUse
         })
         subscriptions.add(subscription)
     }
+
+    fun requestCharacter(characterId: Int) {
+        val subscription = getChatacterServiceUseCase.invoke(characterId).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({ character ->
+            view.showCharacterInformation(character)
+
+            view.hideLoading()
+
+        }, { e ->
+            view.hideLoading()
+            view.showToastNetworkError(e.message.toString())
+        })
+        subscriptions.add(subscription)
+    }
 }
