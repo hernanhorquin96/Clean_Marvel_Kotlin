@@ -8,5 +8,5 @@ open class GetCharacterServiceUseCase(private val characterServiceImp: Character
 
    open operator fun invoke(): Observable<List<Character>> = characterServiceImp.getCaracters()
 
-   open operator fun invoke(id: Int?): Observable<Character> = characterServiceImp.getCharacterById(id)
+   open operator fun invoke(id: Int): Observable<Character> = characterServiceImp.getCharacterById(id)
 }
