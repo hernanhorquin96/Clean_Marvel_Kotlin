@@ -20,10 +20,6 @@ import org.mockito.Mockito.verify
 
 
 class CharactersPresenterTest {
-
-    companion object {
-        private const val EMPTY_MSG = ""
-    }
     private var view = mock(CharactersView::class.java)
     private var characterServiceImp = mock(CharacterServicesImpl::class.java)
     private lateinit var charactersPresenter: CharactersPresenter
@@ -66,5 +62,9 @@ class CharactersPresenterTest {
         charactersPresenter.init()
         verify(view).init()
         verify(characterServiceImp).getCaracters()
+    }
+
+    companion object {
+        private const val EMPTY_MSG = ""
     }
 }

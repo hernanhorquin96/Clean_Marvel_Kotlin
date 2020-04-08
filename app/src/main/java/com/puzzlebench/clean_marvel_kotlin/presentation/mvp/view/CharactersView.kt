@@ -33,8 +33,7 @@ class CharactersView(activity: CharacterActivity): CharactersContract.View {
 
     override fun showToastNoItemToShow() {
         activityRef.get()?.let {
-            val message = it.baseContext.resources.getString(R.string.message_no_items_to_show)
-            it.applicationContext.showToast(message)
+            it.applicationContext.showToast(it.baseContext.resources.getString(R.string.message_no_items_to_show))
         }
     }
 
