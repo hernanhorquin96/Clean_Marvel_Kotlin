@@ -1,13 +1,12 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp.presenter
 
-import com.puzzlebench.clean_marvel_kotlin.presentation.base.Presenter
-import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts.ActivityContract
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts.CharactersContract
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.view.CharactersView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class CharactersPresenter(view: CharactersView, val model: ActivityContract.Model)
-    : Presenter<CharactersView>(view), ActivityContract.Presenter {
+class CharactersPresenter(val view: CharactersView, val model: CharactersContract.Model)
+    : CharactersContract.Presenter {
 
     override fun init() {
         view.init()

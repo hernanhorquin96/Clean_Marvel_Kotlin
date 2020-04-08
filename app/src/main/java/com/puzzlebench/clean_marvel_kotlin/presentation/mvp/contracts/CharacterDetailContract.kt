@@ -3,7 +3,7 @@ package com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts
 import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
 import io.reactivex.Observable
 
-interface DialogFragmentContract {
+interface CharacterDetailContract {
 
     interface Model {
         fun getCharacterServiceUseCase(): Observable<Character>

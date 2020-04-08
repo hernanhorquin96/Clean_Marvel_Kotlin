@@ -9,13 +9,13 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.CharacterDetailFragment
 import com.puzzlebench.clean_marvel_kotlin.presentation.CharacterActivity
 import com.puzzlebench.clean_marvel_kotlin.presentation.adapter.CharacterAdapter
 import com.puzzlebench.clean_marvel_kotlin.presentation.extension.showToast
-import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts.ActivityContract
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts.CharactersContract
 import kotlinx.android.synthetic.main.activity_main.recycleView
 import kotlinx.android.synthetic.main.activity_main.progressBar
 import java.lang.ref.WeakReference
 
 
-class CharactersView(activity: CharacterActivity): ActivityContract.View {
+class CharactersView(activity: CharacterActivity): CharactersContract.View {
     private val activityRef = WeakReference(activity)
     var adapter = CharacterAdapter(emptyList()) { character ->
         activity.applicationContext.showToast(character.name)
