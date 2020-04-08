@@ -24,7 +24,7 @@ class CharacterDetailFragment() : DialogFragment() {
                            CharacterDetailFragmentView(this),
                            CharacterDetailModel(getCharacterServiceUseCase,characterId)
                    )
-            characterDetailPresenter.requestCharacter(characterId)
+            characterDetailPresenter.requestCharacter()
         }
         rootView.btnClose.setOnClickListener {
             this.dismiss()

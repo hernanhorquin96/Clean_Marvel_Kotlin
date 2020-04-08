@@ -1,5 +1,6 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp.view
 
+import android.view.View
 import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
 import com.puzzlebench.clean_marvel_kotlin.presentation.CharacterDetailFragment
 import com.puzzlebench.clean_marvel_kotlin.presentation.extension.getImageByUrl
@@ -7,6 +8,7 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.extension.showToast
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts.CharacterDetailContract
 import kotlinx.android.synthetic.main.character_dialog_fragment.imgCharacter
 import kotlinx.android.synthetic.main.character_dialog_fragment.txtCharacterName
+import kotlinx.android.synthetic.main.character_dialog_fragment.progressBar
 import kotlinx.android.synthetic.main.character_dialog_fragment.txtCharacterDescription
 import java.lang.ref.WeakReference
 
@@ -23,6 +25,14 @@ class CharacterDetailFragmentView(fragment: CharacterDetailFragment): CharacterD
         getFragmentRef()?.imgCharacter?.getImageByUrl("${character.thumbnail.path}$DOT${character.thumbnail.extension}")
         getFragmentRef()?.txtCharacterName?.text = character.name
         getFragmentRef()?.txtCharacterDescription?.text = character.description
+    }
+
+    override fun showLoading() {
+        getFragmentRef()?.progressBar?.visibility = View.VISIBLE
+    }
+
+    override fun hideLoading() {
+        getFragmentRef()?.progressBar?.visibility = View.GONE
     }
 
     companion object {

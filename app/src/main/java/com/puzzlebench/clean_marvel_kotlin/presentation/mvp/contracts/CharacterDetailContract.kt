@@ -12,9 +12,11 @@ interface CharacterDetailContract {
     interface View {
         fun showToastNetworkError(error: String)
         fun showCharacterInformation(character: Character)
+        fun showLoading()
+        fun hideLoading()
     }
 
     interface Presenter {
-        fun requestCharacter(characterId: Int)
+        fun requestCharacter()
     }
 }
