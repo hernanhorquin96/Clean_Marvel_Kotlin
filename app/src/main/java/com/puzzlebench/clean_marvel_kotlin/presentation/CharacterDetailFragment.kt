@@ -12,7 +12,7 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts.CharacterD
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.model.CharacterDetailModel
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.presenter.CharacterDialogPresenter
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.view.CharacterDetailFragmentView
-import kotlinx.android.synthetic.main.character_dialog_fragment.view.btnClose
+import kotlinx.android.synthetic.main.character_dialog_fragment.view.btn_close
 
 class CharacterDetailFragment() : DialogFragment() {
 
@@ -23,11 +23,12 @@ class CharacterDetailFragment() : DialogFragment() {
             val characterDetailPresenter: CharacterDetailContract.Presenter =
                    CharacterDialogPresenter(
                            CharacterDetailFragmentView(this),
-                           CharacterDetailModel(getCharacterServiceUseCase,characterId)
+                           CharacterDetailModel(getCharacterServiceUseCase),
+                           characterId
                    )
             characterDetailPresenter.requestCharacter()
         }
-        rootView.btnClose.setOnClickListener {
+        rootView.btn_close.setOnClickListener {
             this.dismiss()
         }
         return rootView

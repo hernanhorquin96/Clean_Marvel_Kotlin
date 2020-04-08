@@ -6,10 +6,10 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.CharacterDetailFragment
 import com.puzzlebench.clean_marvel_kotlin.presentation.extension.getImageByUrl
 import com.puzzlebench.clean_marvel_kotlin.presentation.extension.showToast
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts.CharacterDetailContract
-import kotlinx.android.synthetic.main.character_dialog_fragment.imgCharacter
-import kotlinx.android.synthetic.main.character_dialog_fragment.txtCharacterName
-import kotlinx.android.synthetic.main.character_dialog_fragment.progressBar
-import kotlinx.android.synthetic.main.character_dialog_fragment.txtCharacterDescription
+import kotlinx.android.synthetic.main.character_dialog_fragment.img_character
+import kotlinx.android.synthetic.main.character_dialog_fragment.txt_character_name
+import kotlinx.android.synthetic.main.character_dialog_fragment.progress_bar
+import kotlinx.android.synthetic.main.character_dialog_fragment.txt_character_description
 import java.lang.ref.WeakReference
 
 class CharacterDetailFragmentView(fragment: CharacterDetailFragment): CharacterDetailContract.View {
@@ -22,17 +22,17 @@ class CharacterDetailFragmentView(fragment: CharacterDetailFragment): CharacterD
     }
 
     override fun showCharacterInformation(character: Character) {
-        getFragmentRef()?.imgCharacter?.getImageByUrl("${character.thumbnail.path}$DOT${character.thumbnail.extension}")
-        getFragmentRef()?.txtCharacterName?.text = character.name
-        getFragmentRef()?.txtCharacterDescription?.text = character.description
+        getFragmentRef()?.img_character?.getImageByUrl("${character.thumbnail.path}$DOT${character.thumbnail.extension}")
+        getFragmentRef()?.txt_character_name?.text = character.name
+        getFragmentRef()?.txt_character_description?.text = character.description
     }
 
     override fun showLoading() {
-        getFragmentRef()?.progressBar?.visibility = View.VISIBLE
+        getFragmentRef()?.progress_bar?.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-        getFragmentRef()?.progressBar?.visibility = View.GONE
+        getFragmentRef()?.progress_bar?.visibility = View.GONE
     }
 
     companion object {

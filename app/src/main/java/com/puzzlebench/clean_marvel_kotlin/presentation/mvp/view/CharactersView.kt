@@ -10,14 +10,14 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.CharacterActivity
 import com.puzzlebench.clean_marvel_kotlin.presentation.adapter.CharacterAdapter
 import com.puzzlebench.clean_marvel_kotlin.presentation.extension.showToast
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts.CharactersContract
-import kotlinx.android.synthetic.main.activity_main.recycleView
-import kotlinx.android.synthetic.main.activity_main.progressBar
+import kotlinx.android.synthetic.main.activity_main.recycler_view
+import kotlinx.android.synthetic.main.activity_main.progress_bar
 import java.lang.ref.WeakReference
 
 
 class CharactersView(activity: CharacterActivity): CharactersContract.View {
     private val activityRef = WeakReference(activity)
-    var adapter = CharacterAdapter(emptyList()) { character ->
+    private val adapter = CharacterAdapter(emptyList()) { character ->
         activity.applicationContext.showToast(character.name)
         val characterFragment = CharacterDetailFragment.newInstance(character.id)
         characterFragment.show(activity.supportFragmentManager, activity.getString(R.string.tag))
@@ -25,8 +25,8 @@ class CharactersView(activity: CharacterActivity): CharactersContract.View {
 
     override fun init() {
         activityRef.get()?.let {
-            it.recycleView.layoutManager = LinearLayoutManager(it.applicationContext, RecyclerView.VERTICAL, false)
-            it.recycleView.adapter = adapter
+            it.recycler_view.layoutManager = LinearLayoutManager(it.applicationContext, RecyclerView.VERTICAL, false)
+            it.recycler_view.adapter = adapter
             showLoading()
         }
     }
@@ -43,7 +43,7 @@ class CharactersView(activity: CharacterActivity): CharactersContract.View {
     }
 
     override fun hideLoading() {
-        activityRef.get()?.progressBar?.visibility = View.GONE
+        activityRef.get()?.progress_bar?.visibility = View.GONE
     }
 
     override fun showCharacters(characters: List<Character>) {
@@ -51,6 +51,6 @@ class CharactersView(activity: CharacterActivity): CharactersContract.View {
     }
 
     override fun showLoading() {
-        activityRef.get()?.progressBar?.visibility = View.VISIBLE
+        activityRef.get()?.progress_bar?.visibility = View.VISIBLE
     }
 }

@@ -4,12 +4,12 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts.CharacterD
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class CharacterDialogPresenter(val view: CharacterDetailContract.View, val model: CharacterDetailContract.Model)
+class CharacterDialogPresenter(val view: CharacterDetailContract.View, val model: CharacterDetailContract.Model, private val characterId: Int)
     : CharacterDetailContract.Presenter {
 
     override fun requestCharacter() {
         view.showLoading()
-        model.getCharacterServiceUseCase()
+        model.getCharacterServiceUseCase(characterId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ character ->
