@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.clean_marvel_kotlin.data.service.CharacterServicesImpl
 import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterServiceUseCase
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts.CharacterDetailContract
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.model.CharacterDetailModel
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.presenter.CharacterDialogPresenter
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.view.CharacterDetailFragmentView
@@ -19,7 +20,7 @@ class CharacterDetailFragment() : DialogFragment() {
         val rootView: View = inflater.inflate(R.layout.character_dialog_fragment, container, false)
         this.arguments.getInt(CHARACTER_ID).let { characterId ->
             val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl())
-            val characterDetailPresenter =
+            val characterDetailPresenter: CharacterDetailContract.Presenter =
                    CharacterDialogPresenter(
                            CharacterDetailFragmentView(this),
                            CharacterDetailModel(getCharacterServiceUseCase,characterId)
