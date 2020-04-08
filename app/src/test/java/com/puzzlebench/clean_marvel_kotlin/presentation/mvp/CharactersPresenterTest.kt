@@ -4,6 +4,9 @@ import com.puzzlebench.clean_marvel_kotlin.data.service.CharacterServicesImpl
 import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
 import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterServiceUseCase
 import com.puzzlebench.clean_marvel_kotlin.mocks.factory.CharactersFactory
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.model.CharactersModel
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.presenter.CharactersPresenter
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.view.CharactersView
 import io.reactivex.Observable
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.disposables.CompositeDisposable
@@ -15,38 +18,28 @@ import org.mockito.Mockito
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 
-//TODO fix on second iteration
-// error: However, there was exactly 1 interaction with this mock:
-class CharacterPresenterTest {
 
-
-    private var view = mock(CharecterView::class.java)
+class CharactersPresenterTest {
+    private var view = mock(CharactersView::class.java)
     private var characterServiceImp = mock(CharacterServicesImpl::class.java)
-    private lateinit var characterPresenter: CharacterPresenter
+    private lateinit var charactersPresenter: CharactersPresenter
     private lateinit var getCharacterServiceUseCase: GetCharacterServiceUseCase
-
 
     @Before
     fun setUp() {
-
         RxAndroidPlugins.setInitMainThreadSchedulerHandler { scheduler -> Schedulers.trampoline() }
-
         getCharacterServiceUseCase = GetCharacterServiceUseCase(characterServiceImp)
-        val subscriptions = mock(CompositeDisposable::class.java)
-        characterPresenter = CharacterPresenter(view, getCharacterServiceUseCase, subscriptions)
-
-
+        charactersPresenter = CharactersPresenter(view, CharactersModel(getCharacterServiceUseCase))
     }
 
     @Ignore
     fun reposeWithError() {
-        Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(Observable.error(Exception("")))
-        characterPresenter.init()
+        Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(Observable.error(Exception(EMPTY_MSG)))
+        charactersPresenter.init()
         verify(view).init()
         verify(characterServiceImp).getCaracters()
         verify(view).hideLoading()
-        verify(view).showToastNetworkError("")
-
+        verify(view).showToastNetworkError(EMPTY_MSG)
     }
 
     @Test
@@ -54,13 +47,11 @@ class CharacterPresenterTest {
         val itemsCharecters = CharactersFactory.getMockCharacter()
         val observable = Observable.just(itemsCharecters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
-        characterPresenter.init()
+        charactersPresenter.init()
         verify(view).init()
         verify(characterServiceImp).getCaracters()
         verify(view).hideLoading()
         verify(view).showCharacters(itemsCharecters)
-
-
     }
 
     @Test
@@ -68,12 +59,12 @@ class CharacterPresenterTest {
         val itemsCharecters = emptyList<Character>()
         val observable = Observable.just(itemsCharecters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
-        characterPresenter.init()
+        charactersPresenter.init()
         verify(view).init()
         verify(characterServiceImp).getCaracters()
-
-
     }
 
-
+    companion object {
+        private const val EMPTY_MSG = ""
+    }
 }
