@@ -6,8 +6,9 @@
     <ImageView
         android:id="@+id/imgCharacter"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </ImageView>
+        android:layout_height="match_parent"
+        android:minHeight="@dimen/character_image_height"
+        android:minWidth="@dimen/character_image_height"/>
 
     <TextView
         android:id="@+id/txtCharacterName"
@@ -16,8 +17,7 @@
         android:textSize="@dimen/name_text_size"
         android:textColor="@color/white"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        app:layout_constraintTop_toTopOf="parent">
-    </TextView>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/txtCharacterDescription"
@@ -26,8 +26,7 @@
         android:textSize="@dimen/description_text_size"
         android:textColor="@color/white"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        app:layout_constraintBottom_toBottomOf="parent">
-    </TextView>
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <ImageButton
         android:id="@+id/btnClose"
@@ -35,7 +34,5 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_close_black_24dp">
-
-    </ImageButton>
+        android:src="@drawable/ic_close_black_24dp"/>
 </android.support.constraint.ConstraintLayout>
