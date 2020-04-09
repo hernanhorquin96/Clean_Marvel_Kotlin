@@ -10,4 +10,6 @@
     <dimen name="body_text_size">16dp</dimen>
     <dimen name="name_text_size">24sp</dimen>
     <dimen name="description_text_size">12sp</dimen>
+    <dimen name="margin_cardview">2dp</dimen>
+    <dimen name="radius_cardview_corners">4dp</dimen>
 </resources>
