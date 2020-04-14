@@ -9,7 +9,9 @@ import io.reactivex.Observable
 class CharactersModel(private val getCharacterServiceUseCase: GetCharacterServiceUseCase,
                       private val storeCharactersUseCase: StoreCharactersUseCase
 ) : CharactersContract.Model {
-    override fun getCharacterServiceUseCase(): Observable<List<Character>> = getCharacterServiceUseCase.invoke()
-    override fun storeCharactersUseCase(characters: List<Character>) = storeCharactersUseCase.invoke(characters)
+    override fun getCharactersInfo(): Observable<List<Character>> = getCharacterServiceUseCase()
+    override fun storeCharacters(characters: List<Character>){
+        storeCharactersUseCase(characters)
+    }
 
 }

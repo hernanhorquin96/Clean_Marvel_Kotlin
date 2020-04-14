@@ -13,7 +13,7 @@ class CharactersPresenter(
     }
 
     override fun requestGetCharacters() {
-        model.getCharacterServiceUseCase()
+        model.getCharactersInfo()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ characters ->
@@ -21,7 +21,7 @@ class CharactersPresenter(
                         view.showToastNoItemToShow()
                     } else {
                         view.showCharacters(characters)
-                        model.storeCharactersUseCase(characters)
+                        model.storeCharacters(characters)
                     }
                     view.hideLoading()
                 }, { e ->

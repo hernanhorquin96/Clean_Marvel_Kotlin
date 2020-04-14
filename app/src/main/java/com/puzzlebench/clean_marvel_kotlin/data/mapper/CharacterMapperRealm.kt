@@ -7,14 +7,14 @@ import com.puzzlebench.clean_marvel_kotlin.domain.model.ThumbnailRealm
 
 open class CharacterMapperRealm : BaseMapperRepository<CharacterRealm, Character> {
 
-    override fun transform(characterRealm: CharacterRealm): Character = Character(
+    override fun transformToCharacter(characterRealm: CharacterRealm): Character = Character(
             characterRealm.id,
             characterRealm.name.toString(),
             characterRealm.description.toString(),
             transformToThumbnail(characterRealm.thumbnail)
     )
 
-    override fun transformToResponse(character: Character): CharacterRealm = CharacterRealm(
+    override fun transformToCharacterResponse(character: Character): CharacterRealm = CharacterRealm(
             character.id,
             character.name,
             character.description,
@@ -31,6 +31,6 @@ open class CharacterMapperRealm : BaseMapperRepository<CharacterRealm, Character
             thumbnail?.extension.toString()
     )
 
-    fun transformToListOfCharactersRealm(characters: List<Character>) = characters.map { transformToResponse(it) }
-    fun transformToListOfCharacters(charactersRealm: List<CharacterRealm>) = charactersRealm.map { transform(it) }
+    fun transformToListOfCharactersRealm(characters: List<Character>) = characters.map { transformToCharacterResponse(it) }
+    fun transformToListOfCharacters(charactersRealm: List<CharacterRealm>) = charactersRealm.map { transformToCharacter(it) }
 }

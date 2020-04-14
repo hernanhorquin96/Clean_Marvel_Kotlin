@@ -5,8 +5,8 @@ import io.realm.annotations.PrimaryKey
 
 open class CharacterRealm(
     @PrimaryKey var id: Int = DEFAULT_ID,
-    var name: String? = DEFAULT_STRING,
-    var description: String? = DEFAULT_STRING,
+    var name: String = DEFAULT_STRING,
+    var description: String = DEFAULT_STRING,
     var thumbnail: ThumbnailRealm? = ThumbnailRealm()
 ) : RealmObject() {
     companion object {

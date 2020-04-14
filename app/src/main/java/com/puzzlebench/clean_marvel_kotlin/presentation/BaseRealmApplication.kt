@@ -1,9 +1,9 @@
-package com.puzzlebench.clean_marvel_kotlin.presentation.base
+package com.puzzlebench.clean_marvel_kotlin.presentation
 
 import android.app.Application
 import io.realm.Realm
 
-class BaseRealm() : Application() {
+class BaseRealmApplication() : Application() {
 
     override fun onCreate() {
         super.onCreate()

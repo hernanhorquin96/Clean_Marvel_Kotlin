@@ -6,5 +6,5 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts.CharacterD
 import io.reactivex.Observable
 
 class CharacterDetailModel(private val getCharacterServiceUseCase: GetCharacterServiceUseCase): CharacterDetailContract.Model {
-    override fun getCharacterServiceUseCase(characterId: Int): Observable<Character> = getCharacterServiceUseCase.invoke(characterId)
+    override fun getCharacterInfo(characterId: Int): Observable<Character> = getCharacterServiceUseCase(characterId)
 }

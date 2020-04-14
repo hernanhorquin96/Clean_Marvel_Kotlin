@@ -10,8 +10,7 @@ class StoreCharactersServiceImpl(private val mapper: CharacterMapperRealm = Char
     override fun saveCharactersDB(characters: List<Character>) {
         val realm = Realm.getDefaultInstance()
         realm.executeTransaction {
-            realm.deleteAll()
-            realm.insert(mapper.transformToListOfCharactersRealm(characters))
+            realm.insertOrUpdate(mapper.transformToListOfCharactersRealm(characters))
         }
     }
 }

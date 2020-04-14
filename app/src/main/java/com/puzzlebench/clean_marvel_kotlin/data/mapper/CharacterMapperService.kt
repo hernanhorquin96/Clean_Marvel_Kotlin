@@ -8,7 +8,7 @@ import com.puzzlebench.clean_marvel_kotlin.domain.model.Thumbnail
 
 open class CharacterMapperService : BaseMapperRepository<CharacterResponse, Character> {
 
-    override fun transform(characterResponse: CharacterResponse): Character
+    override fun transformToCharacter(characterResponse: CharacterResponse): Character
             = Character(
             characterResponse.id,
             characterResponse.name,
@@ -16,7 +16,7 @@ open class CharacterMapperService : BaseMapperRepository<CharacterResponse, Char
             transformToThumbnail(characterResponse.thumbnail)
     )
 
-    override fun transformToResponse(type: Character): CharacterResponse
+    override fun transformToCharacterResponse(type: Character): CharacterResponse
             = CharacterResponse(
             type.id,
             type.name,
@@ -37,6 +37,6 @@ open class CharacterMapperService : BaseMapperRepository<CharacterResponse, Char
     )
 
     fun transform(charactersResponse: List<CharacterResponse>): List<Character>
-            = charactersResponse.map { transform(it) }
+            = charactersResponse.map { transformToCharacter(it) }
 
 }

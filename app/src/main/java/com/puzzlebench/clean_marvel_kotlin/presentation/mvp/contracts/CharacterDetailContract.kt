@@ -6,7 +6,7 @@ import io.reactivex.Observable
 interface CharacterDetailContract {
 
     interface Model {
-        fun getCharacterServiceUseCase(characterId: Int): Observable<Character>
+        fun getCharacterInfo(characterId: Int): Observable<Character>
     }
 
     interface View {

@@ -10,8 +10,8 @@ package com.puzzlebench.clean_marvel_kotlin.data.mapper
  */
 interface BaseMapperRepository<E, D> {
 
-    fun transform(type: E): D
+    fun transformToCharacter(type: E): D
 
-    fun transformToResponse(type: D): E
+    fun transformToCharacterResponse(type: D): E
 
 }

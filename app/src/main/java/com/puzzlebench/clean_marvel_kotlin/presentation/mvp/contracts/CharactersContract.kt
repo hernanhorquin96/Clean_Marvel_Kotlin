@@ -5,8 +5,8 @@ import io.reactivex.Observable
 
 interface CharactersContract {
     interface Model {
-        fun getCharacterServiceUseCase(): Observable<List<Character>>
-        fun storeCharactersUseCase(characters: List<Character>)
+        fun getCharactersInfo(): Observable<List<Character>>
+        fun storeCharacters(characters: List<Character>)
     }
 
     interface View {
