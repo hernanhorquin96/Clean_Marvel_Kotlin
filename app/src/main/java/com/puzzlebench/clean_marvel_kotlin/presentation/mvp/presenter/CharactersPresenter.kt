@@ -25,8 +25,18 @@ class CharactersPresenter(
                     }
                     view.hideLoading()
                 }, { e ->
-                    view.hideLoading()
+                    loadLocalData()
                     view.showToastNetworkError(e.message.toString())
                 })
+    }
+
+    override fun loadLocalData() {
+        view.hideLoading()
+        model.getLocalData().let{ characters ->
+            if (characters.isNotEmpty())
+                view.showCharacters(characters)
+            else
+                view.showToastNoItemToShow()
+        }
     }
 }
