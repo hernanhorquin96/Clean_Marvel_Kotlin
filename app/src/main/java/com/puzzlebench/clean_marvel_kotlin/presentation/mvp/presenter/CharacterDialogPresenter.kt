@@ -9,7 +9,7 @@ class CharacterDialogPresenter(val view: CharacterDetailContract.View, val model
 
     override fun requestCharacter() {
         view.showLoading()
-        model.getCharacterServiceUseCase(characterId)
+        model.getCharacterInfo(characterId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ character ->

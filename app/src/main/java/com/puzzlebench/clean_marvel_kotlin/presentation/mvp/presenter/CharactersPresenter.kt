@@ -4,16 +4,16 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts.Characters
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class CharactersPresenter(val view: CharactersContract.View, val model: CharactersContract.Model)
-    : CharactersContract.Presenter {
+class CharactersPresenter(
+        val view: CharactersContract.View,
+        val model: CharactersContract.Model) : CharactersContract.Presenter {
 
     override fun init() {
         view.init()
-        requestGetCharacters()
     }
 
     override fun requestGetCharacters() {
-        model.getCharacterServiceUseCase()
+        model.getCharactersInfo()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ characters ->
@@ -21,6 +21,7 @@ class CharactersPresenter(val view: CharactersContract.View, val model: Characte
                         view.showToastNoItemToShow()
                     } else {
                         view.showCharacters(characters)
+                        model.storeCharacters(characters)
                     }
                     view.hideLoading()
                 }, { e ->
