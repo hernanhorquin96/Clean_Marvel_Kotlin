@@ -7,6 +7,7 @@ interface CharactersContract {
     interface Model {
         fun getCharactersInfo(): Observable<List<Character>>
         fun storeCharacters(characters: List<Character>)
+        fun getLocalData(): List<Character>
     }
 
     interface View {
@@ -21,5 +22,6 @@ interface CharactersContract {
     interface Presenter {
         fun init()
         fun requestGetCharacters()
+        fun loadLocalData()
     }
 }

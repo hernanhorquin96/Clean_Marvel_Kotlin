@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.puzzlebench.clean_marvel_kotlin.R
-import com.puzzlebench.clean_marvel_kotlin.data.service.CharacterServicesImpl
 import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterServiceUseCase
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.contracts.CharacterDetailContract
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.model.CharacterDetailModel
@@ -19,7 +18,7 @@ class CharacterDetailFragment() : DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val rootView: View = inflater.inflate(R.layout.character_dialog_fragment, container, false)
         this.arguments.getInt(CHARACTER_ID).let { characterId ->
-            val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl())
+            val getCharacterServiceUseCase = GetCharacterServiceUseCase()
             val characterDetailPresenter: CharacterDetailContract.Presenter =
                    CharacterDialogPresenter(
                            CharacterDetailFragmentView(this),
