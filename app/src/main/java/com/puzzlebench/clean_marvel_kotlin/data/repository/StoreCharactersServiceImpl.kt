@@ -1,4 +1,4 @@
-package com.puzzlebench.clean_marvel_kotlin.data.service
+package com.puzzlebench.clean_marvel_kotlin.data.repository
 
 import com.puzzlebench.clean_marvel_kotlin.data.mapper.CharacterMapperRealm
 import com.puzzlebench.clean_marvel_kotlin.domain.contracts.CharacterRepository
