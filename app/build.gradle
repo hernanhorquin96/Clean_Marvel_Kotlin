@@ -51,6 +51,7 @@ dependencies {
     implementation lib.kotlin
     testImplementation lib.mockito
     testImplementation lib.junit
+    testImplementation lib.mockitokotlin
 }
 
 android.testOptions.unitTests.all {

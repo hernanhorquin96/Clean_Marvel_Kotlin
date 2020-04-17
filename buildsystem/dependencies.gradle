@@ -13,6 +13,7 @@ ext {
     mockito = "2.10.0"
     junit = "4.12"
     kotlin = "1.2.10"
+    mockitokotlin = "2.2.0"
 
     generalDependencies = [
             appcompat : "com.android.support:appcompat-v7:${appcompat}",
@@ -28,7 +29,7 @@ ext {
             rxjava: "io.reactivex.rxjava2:rxjava:${rxjava}",
             mockito: "org.mockito:mockito-core:${mockito}",
             junit: "junit:junit:${junit}",
-            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlin}"
-
+            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlin}",
+            mockitokotlin: "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitokotlin}"
     ]
 }
